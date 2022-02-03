@@ -5,7 +5,7 @@
   color: $header-heading-color;
   text-align: center;
   background-color: $header-bg-color;
-  background-image: url("/assets/img/bg.jpg");
+  background-image: url("../img/bg.jpg");
   background-position: center;
 
   @include large {
