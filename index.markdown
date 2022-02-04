@@ -162,6 +162,7 @@ Box plot of scores for the CEG-HC dataset that was augmented using the hard-clip
       <td>Wave-U-Net</td>
       <td>CRAFx</td>
       <td>UMX</td>
+      <td>A-SPADE</td>
     </tr>
     <tr>
       <td>A</td>
@@ -171,6 +172,7 @@ Box plot of scores for the CEG-HC dataset that was augmented using the hard-clip
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/waveunet.wav" type="audio/mpeg" /></audio></td>
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/crafx.wav" type="audio/mpeg" /></audio></td>
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/aspade.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>B</td>
@@ -180,6 +182,7 @@ Box plot of scores for the CEG-HC dataset that was augmented using the hard-clip
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/crafx.wav" type="audio/mpeg" /></audio></td>
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/aspade.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>C</td>
@@ -189,6 +192,7 @@ Box plot of scores for the CEG-HC dataset that was augmented using the hard-clip
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/crafx.wav" type="audio/mpeg" /></audio></td>
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/aspade.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>D</td>
@@ -198,6 +202,7 @@ Box plot of scores for the CEG-HC dataset that was augmented using the hard-clip
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/crafx.wav" type="audio/mpeg" /></audio></td>
       <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/aspade.wav" type="audio/mpeg" /></audio></td>
     </tr>
   </tbody>
 </table>
