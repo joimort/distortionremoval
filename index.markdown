@@ -10,17 +10,23 @@ document.addEventListener("play", function(evt) {
 <script>
 $(document).ready(function() {
   $('#gain_od').on('change', function() {
-    change($(this).val());
+    change($(this).val(), "audio_cegod");
+  });
+});
+$(document).ready(function() {
+  $('#gain_hc').on('change', function() {
+    change($(this).val(), "audio_ceghc");
   });
 });
 
 $(document).ready(function() {
-  $('#gain_hc').on('change', function() {
-    change($(this).val());
+  $('#inp_sdr').on('change', function() {
+    change($(this).val(), "audio_st");
   });
 });
-function change(gain) {
-  var all_audio = document.getElementsByClassName("audiosrc");
+
+function change(gain, classname) {
+  var all_audio = document.getElementsByClassName(classname);
   for (var i = all_audio.length - 1; i >= 0; i--)
   {
     var audio = all_audio[i];
@@ -56,20 +62,7 @@ To create the processed input dataset CEG-OD, the SoX overdrive algorithm was ap
 Box plot of scores for the CEG-OD dataset that was augmented using the overdrive algorithm. The boxes show the first and third quartile of the data while the median is indicated with a line in the box. Higher score indicates superior performance except for FAD. Demucs can be regarded as the best model for all metrics. The results indicate that time-domain-based models are better suited to solve the task of overdrive removal.
 
 ### Audio Examples
-<!--
-<div class="chooser" style="margin-top:10px">
-  <p>
-    Select input SDR:
-    <a id="20dB" class="clickable" title="Show input SDR 20 dB." href="#" onclick="Change_inputSDR(0,this.id);return false;">20&nbsp;dB</a>
-    <a id="25dB" class="clickable" title="Show input SDR 25 dB." href="#" onclick="Change_inputSDR(1,this.id);return false;">25&nbsp;dB</a>            
-    <a id="30dB" class="clickable" title="Show input SDR 30 dB." href="#" onclick="Change_inputSDR(2,this.id);return false;">30&nbsp;dB</a>            
-    <a id="35dB" class="clickable" title="Show input SDR 35 dB." href="#" onclick="Change_inputSDR(3,this.id);return false;">35&nbsp;dB</a>            
-    <a id="40dB" class="clickable" title="Show input SDR 40 dB." href="#" onclick="Change_inputSDR(4,this.id);return false;">40&nbsp;dB</a>            
-    <a id="45dB" class="clickable" title="Show input SDR 45 dB." href="#" onclick="Change_inputSDR(5,this.id);return false;">45&nbsp;dB</a>            
-    <a id="50dB" class="clickable" title="Show input SDR 50 dB." href="#" onclick="Change_inputSDR(6,this.id);return false;">50&nbsp;dB</a>       
-  </p>
-</div>		
--->
+
 <label for="gain_od">Select gain:</label>
 <select name="gain_od" id="gain_od">
   <option value="20">20 dB</option>
@@ -95,43 +88,43 @@ Box plot of scores for the CEG-OD dataset that was augmented using the overdrive
     </tr>
     <tr>
       <td>A</td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/inp.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/tar.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/demucs.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/waveunet.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/crafx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/umx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/irm.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/crafx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow2/35/irm.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>B</td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/inp.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/tar.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/demucs.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/crafx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/umx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/irm.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/crafx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/mel1/35/irm.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>C</td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/inp.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/tar.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/demucs.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/crafx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/umx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/irm.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/crafx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/sin1/35/irm.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>D</td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/inp.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/tar.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/demucs.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/crafx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/umx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/irm.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/crafx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_cegod" controls="" style="width: 100px;"><source src="./assets/audio/CEG_OD/pow1/35/irm.wav" type="audio/mpeg" /></audio></td>
     </tr>
   </tbody>
 </table>
@@ -172,39 +165,39 @@ Box plot of scores for the CEG-HC dataset that was augmented using the hard-clip
     </tr>
     <tr>
       <td>A</td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/inp.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/tar.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/demucs.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/waveunet.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/crafx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/crafx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow2/35/umx.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>B</td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/inp.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/tar.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/demucs.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/crafx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/crafx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/mel1/35/umx.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>C</td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/inp.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/tar.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/demucs.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/crafx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/crafx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/sin1/35/umx.wav" type="audio/mpeg" /></audio></td>
     </tr>
     <tr>
       <td>D</td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/inp.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/tar.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/demucs.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/crafx.wav" type="audio/mpeg" /></audio></td>
-      <td><audio class="audiosrc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/crafx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_ceghc" controls="" style="width: 100px;"><source src="./assets/audio/CEG_HC/pow1/35/umx.wav" type="audio/mpeg" /></audio></td>
     </tr>
   </tbody>
 </table>
@@ -215,7 +208,7 @@ All examples were normalized to -19 dB LUFS according to ITU-R BS.1770-4.
 
 Although CEG represents a good source of data for our experiments due to its specificity of instrument, it remains a limited resource in terms of size, variety and realism. Before attempting to train a system to handle recordings in real environments (e.g., a commercial song), we need to investigate how the current models at our disposal handle the availability of more and diverse training data. For this purpose, we also performed experiments on the SignalTrain dataset, which consists of more than 24 hours of music and randomly-generated test sounds.
 
-By applying hard-clipping to this clean data, we created SignalTrain-HC. In contrast to CEG-HC and CEG-OD, hard-clipping was applied online during training using a uniformly-sampled input SDR value in the range SDRinp ∈ [1, 20] dB. During the evaluation stage, we applied each input SDR in the set SDRinp ∈ {1,3,5,7,10,15,20} dB to each sample in the test set.
+By applying hard-clipping to this clean data, we created SignalTrain-HC. In contrast to CEG-HC and CEG-OD, hard-clipping was applied using a uniformly-sampled input SDR value in the range SDRinp ∈ [1, 20] dB. During the evaluation stage, we applied each input SDR in the set SDRinp ∈ {1,3,5,7,10,15,20} dB to each sample in the test set.
 
 ### Results
 
@@ -224,7 +217,79 @@ Box plot of scores for the SignalTrain-HC dataset that was augmented using the h
 
 ### Audio Examples
 
-... will be uploaded soon!
+
+<label for="inp_sdr">Select input SDR:</label>
+<select name="inp_sdr" id="inp_sdr">
+  <option value="01">1 dB</option>
+  <option value="03">3 dB</option>
+  <option value="05">5 dB</option>
+  <option value="07" selected="selected">7 dB</option>
+  <option value="10">10 dB</option>
+  <option value="15">15 dB</option>
+  <option value="20">20 dB</option>
+</select>
+
+<table style='text-align: center;'>
+  <tbody>
+    <tr>
+      <td>Example</td>
+      <td>Distorted</td>
+      <td>Target</td>
+      <td>Demucs</td>
+      <td>Wave-U-Net</td>
+      <td>UMX</td>
+      <td>A-SPADE</td>
+      <td>IRM</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/pian/07/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/pian/07/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/pian/07/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/pian/07/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/pian/07/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/pian/07/aspade.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/pian/07/irm.wav" type="audio/mpeg" /></audio></td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/perc/07/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/perc/07/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/perc/07/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/perc/07/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/perc/07/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/perc/07/aspade.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/perc/07/irm.wav" type="audio/mpeg" /></audio></td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/bass/07/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/bass/07/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/bass/07/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/bass/07/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/bass/07/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/bass/07/aspade.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/bass/07/irm.wav" type="audio/mpeg" /></audio></td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/song/07/inp.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/song/07/tar.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/song/07/demucs.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/song/07/waveunet.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/song/07/umx.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/song/07/aspade.wav" type="audio/mpeg" /></audio></td>
+      <td><audio class="audio_st" controls="" style="width: 100px;"><source src="./assets/audio/ST_HC/song/07/irm.wav" type="audio/mpeg" /></audio></td>
+    </tr>
+
+  </tbody>
+</table>
+All examples were normalized to -23 dB LUFS according to ITU-R BS.1770-4.
+
+### Dependency on Input SDR
+
+![results_ceg_od](assets/img/signaltrain_hardclipping_drive_vs_scores.png)
+Mean scores obtained from the SignalTrain-HC dataset in comparison with the input SDR. The 95 % confidence interval is depicted with a light colored area around each line. Additionally, the black, dashed line depicts the respective score for the distorted input signals. A-SPADE’s performance drops significantly towards heavily clipped signals with a SDRinp of 1 dB; the neural models do not exhibit such a behavior.
 
 # Citation
 
